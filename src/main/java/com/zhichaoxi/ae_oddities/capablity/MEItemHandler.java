@@ -23,7 +23,7 @@ public class MEItemHandler implements IItemHandler {
     @Override
     public int getSlots() {
         int size = getStackFromMEStorage().size();
-        return size + 1;
+        return size;
     }
 
     @Override
@@ -39,6 +39,9 @@ public class MEItemHandler implements IItemHandler {
     public @NotNull ItemStack extractItem(int i, int num, boolean sim) {
         ArrayList<ItemStack> ItemStacks = getStackFromMEStorage();
         ItemStack stack = ItemStacks.get(i);
+        if (stack == ItemStack.EMPTY) {
+            return stack.copy();
+        }
         long result = storage.extract(AEItemKey.of(stack),
                 num, sim ? Actionable.SIMULATE : Actionable.MODULATE, source);
         var r = stack.copy();
@@ -49,6 +52,9 @@ public class MEItemHandler implements IItemHandler {
     @Override
     public @NotNull ItemStack insertItem(int i, @NotNull ItemStack stack, boolean sim) {
         int count = stack.getCount();
+        if (stack == ItemStack.EMPTY) {
+            return stack.copy();
+        }
         long result = storage.insert(AEItemKey.of(stack),
                 count, sim ? Actionable.SIMULATE : Actionable.MODULATE, source);
         var r = stack.copy();
@@ -75,6 +81,7 @@ public class MEItemHandler implements IItemHandler {
                 stacks.add(itemKey.toStack(amount));
             }
         });
+        stacks.add(ItemStack.EMPTY);
         return stacks;
     }
 }

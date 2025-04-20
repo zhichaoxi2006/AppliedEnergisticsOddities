@@ -23,7 +23,7 @@ public class MEFluidHandler implements IFluidHandler {
     @Override
     public int getTanks() {
         int size = getStackFromMEStorage().size();
-        return size + 1;
+        return size;
     }
 
     @Override
@@ -48,6 +48,9 @@ public class MEFluidHandler implements IFluidHandler {
     @Override
     public int fill(FluidStack resource, FluidAction action) {
         boolean sim = action.simulate();
+        if (resource == FluidStack.EMPTY) {
+            return 0;
+        }
         int count = resource.getAmount();
         long result = storage.insert(AEFluidKey.of(resource),
                 count, sim ? Actionable.SIMULATE : Actionable.MODULATE, source);
@@ -57,6 +60,9 @@ public class MEFluidHandler implements IFluidHandler {
     @Override
     public @NotNull FluidStack drain(FluidStack resource, FluidAction action) {
         boolean sim = action.simulate();
+        if (resource == FluidStack.EMPTY) {
+            return resource.copy();
+        }
         int num = resource.getAmount();
         long result = storage.extract(AEFluidKey.of(resource),
                 num, sim ? Actionable.SIMULATE : Actionable.MODULATE, source);
@@ -86,6 +92,7 @@ public class MEFluidHandler implements IFluidHandler {
                 stacks.add(fluidKey.toStack(amount));
             }
         });
+        stacks.add(FluidStack.EMPTY);
         return stacks;
     }
 }
