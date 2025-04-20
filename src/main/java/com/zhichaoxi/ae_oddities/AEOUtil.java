@@ -1,4 +1,4 @@
-package com.zhichaoxi.appliedenergisticsoddities;
+package com.zhichaoxi.ae_oddities;
 
 import appeng.items.tools.powered.WirelessTerminalItem;
 import net.minecraft.world.entity.player.Player;

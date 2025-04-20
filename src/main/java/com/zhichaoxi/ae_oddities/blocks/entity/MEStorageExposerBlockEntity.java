@@ -1,11 +1,11 @@
-package com.zhichaoxi.appliedenergisticsoddities.blocks.entity;
+package com.zhichaoxi.ae_oddities.blocks.entity;
 
 import appeng.api.networking.IGrid;
 import appeng.api.networking.storage.IStorageService;
 import appeng.api.storage.MEStorage;
 import appeng.blockentity.grid.AENetworkedBlockEntity;
-import com.zhichaoxi.appliedenergisticsoddities.capablity.MEFluidHandler;
-import com.zhichaoxi.appliedenergisticsoddities.capablity.MEItemHandler;
+import com.zhichaoxi.ae_oddities.capablity.MEFluidHandler;
+import com.zhichaoxi.ae_oddities.capablity.MEItemHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;

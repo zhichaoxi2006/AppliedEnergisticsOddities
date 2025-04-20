@@ -1,10 +1,10 @@
-package com.zhichaoxi.appliedenergisticsoddities.init;
+package com.zhichaoxi.ae_oddities.init;
 
 import appeng.block.AEBaseBlockItem;
 import appeng.core.definitions.BlockDefinition;
 import appeng.core.definitions.ItemDefinition;
-import com.zhichaoxi.appliedenergisticsoddities.AppliedEnergisticsOddities;
-import com.zhichaoxi.appliedenergisticsoddities.blocks.MEStorageExposerBlock;
+import com.zhichaoxi.ae_oddities.AE_Oddities;
+import com.zhichaoxi.ae_oddities.blocks.MEStorageExposerBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -18,7 +18,7 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 public final class AEOBlocks {
-    public static final DeferredRegister.Blocks DR = DeferredRegister.createBlocks(AppliedEnergisticsOddities.MODID);
+    public static final DeferredRegister.Blocks DR = DeferredRegister.createBlocks(AE_Oddities.MODID);
 
     private static final List<BlockDefinition<?>> BLOCKS = new ArrayList<>();
 

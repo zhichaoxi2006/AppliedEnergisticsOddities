@@ -1,4 +1,4 @@
-package com.zhichaoxi.appliedenergisticsoddities.capablity;
+package com.zhichaoxi.ae_oddities.capablity;
 
 import appeng.api.config.Actionable;
 import appeng.api.networking.security.IActionSource;

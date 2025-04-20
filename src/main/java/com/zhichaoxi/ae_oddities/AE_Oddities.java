@@ -1,12 +1,12 @@
-package com.zhichaoxi.appliedenergisticsoddities;
+package com.zhichaoxi.ae_oddities;
 
 import appeng.api.AECapabilities;
 import appeng.api.networking.IInWorldGridNodeHost;
 import appeng.core.localization.GuiText;
-import com.zhichaoxi.appliedenergisticsoddities.blocks.entity.MEStorageExposerBlockEntity;
-import com.zhichaoxi.appliedenergisticsoddities.init.AEOBlockEntities;
-import com.zhichaoxi.appliedenergisticsoddities.init.AEOBlocks;
-import com.zhichaoxi.appliedenergisticsoddities.init.AEOItems;
+import com.zhichaoxi.ae_oddities.blocks.entity.MEStorageExposerBlockEntity;
+import com.zhichaoxi.ae_oddities.init.AEOBlockEntities;
+import com.zhichaoxi.ae_oddities.init.AEOBlocks;
+import com.zhichaoxi.ae_oddities.init.AEOItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -34,10 +34,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
-@Mod(AppliedEnergisticsOddities.MODID)
-public class AppliedEnergisticsOddities
+@Mod(AE_Oddities.MODID)
+public class AE_Oddities
 {
-    public static final String MODID = "appliedenergisticsoddities";
+    public static final String MODID = "ae_oddities";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -55,7 +55,7 @@ public class AppliedEnergisticsOddities
             .build()
     );
 
-    public AppliedEnergisticsOddities(IEventBus modEventBus, ModContainer modContainer)
+    public AE_Oddities(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);
 
@@ -67,7 +67,7 @@ public class AppliedEnergisticsOddities
 
         NeoForge.EVENT_BUS.register(this);
 
-        modEventBus.addListener(AppliedEnergisticsOddities::initUpgrades);
+        modEventBus.addListener(AE_Oddities::initUpgrades);
 
         modEventBus.addListener(this::addCreative);
 

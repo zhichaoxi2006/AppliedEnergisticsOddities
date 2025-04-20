@@ -1,7 +1,7 @@
-package com.zhichaoxi.appliedenergisticsoddities.init;
+package com.zhichaoxi.ae_oddities.init;
 
 import appeng.core.definitions.ItemDefinition;
-import com.zhichaoxi.appliedenergisticsoddities.AppliedEnergisticsOddities;
+import com.zhichaoxi.ae_oddities.AE_Oddities;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class AEOItems {
-    public static final DeferredRegister.Items DR = DeferredRegister.createItems(AppliedEnergisticsOddities.MODID);
+    public static final DeferredRegister.Items DR = DeferredRegister.createItems(AE_Oddities.MODID);
 
     private static final List<ItemDefinition<?>> ITEMS = new ArrayList<>();
 

@@ -1,10 +1,10 @@
-package com.zhichaoxi.appliedenergisticsoddities.init;
+package com.zhichaoxi.ae_oddities.init;
 
 import appeng.block.AEBaseEntityBlock;
 import appeng.blockentity.AEBaseBlockEntity;
 import appeng.core.definitions.BlockDefinition;
-import com.zhichaoxi.appliedenergisticsoddities.AppliedEnergisticsOddities;
-import com.zhichaoxi.appliedenergisticsoddities.blocks.entity.MEStorageExposerBlockEntity;
+import com.zhichaoxi.ae_oddities.AE_Oddities;
+import com.zhichaoxi.ae_oddities.blocks.entity.MEStorageExposerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 @SuppressWarnings("unused")
 public final class AEOBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> DR =
-            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, AppliedEnergisticsOddities.MODID);
+            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, AE_Oddities.MODID);
 
     public static final Supplier<BlockEntityType<MEStorageExposerBlockEntity>> ME_STORAGE_EXPOSER = create(
             "me_storage_exposer",

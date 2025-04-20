@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "appliedenergisticsoddities:block/me_storage_exposer"
-  }
-}
