@@ -4,8 +4,10 @@ import appeng.api.networking.IGrid;
 import appeng.api.networking.storage.IStorageService;
 import appeng.api.storage.MEStorage;
 import appeng.blockentity.grid.AENetworkedBlockEntity;
+import com.zhichaoxi.ae_oddities.capablity.MEChemicalHandler;
 import com.zhichaoxi.ae_oddities.capablity.MEFluidHandler;
 import com.zhichaoxi.ae_oddities.capablity.MEItemHandler;
+import mekanism.api.chemical.IChemicalHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -37,6 +39,16 @@ public class MEStorageExposerBlockEntity extends AENetworkedBlockEntity {
             IStorageService storageService = grid.getStorageService();
             MEStorage storage = storageService.getInventory();
             return new MEFluidHandler(storage);
+        }
+        return null;
+    }
+
+    public @Nullable IChemicalHandler getChemicalHandler(Direction direction) {
+        IGrid grid = getMainNode().getGrid();
+        if (grid != null) {
+            IStorageService storageService = grid.getStorageService();
+            MEStorage storage = storageService.getInventory();
+            return new MEChemicalHandler(storage);
         }
         return null;
     }

@@ -7,8 +7,10 @@ import com.zhichaoxi.ae_oddities.blocks.entity.MEStorageExposerBlockEntity;
 import com.zhichaoxi.ae_oddities.init.AEOBlockEntities;
 import com.zhichaoxi.ae_oddities.init.AEOBlocks;
 import com.zhichaoxi.ae_oddities.init.AEOItems;
+import me.ramidzkh.mekae2.MekCapabilities;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import org.slf4j.Logger;
@@ -109,6 +111,11 @@ public class AE_Oddities
                         AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getItemHandler);
                 event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
                         AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getFluidHandler);
+
+                if (ModList.get().isLoaded("appmek")) {
+                    event.registerBlockEntity(MekCapabilities.CHEMICAL.block(),
+                            AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getChemicalHandler);
+                }
             }
         }
     }
