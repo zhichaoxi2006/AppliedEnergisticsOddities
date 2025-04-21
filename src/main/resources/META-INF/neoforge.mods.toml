@@ -66,9 +66,8 @@ description='''${mod_description}'''
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="mekanism"
+    modId="appmek"
     type="OPTIONAL"
-    versionRange="[10.6.6,)"
     ordering="AFTER"
     side="BOTH"
 
