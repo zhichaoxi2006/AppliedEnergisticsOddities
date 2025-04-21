@@ -57,6 +57,22 @@ description='''${mod_description}'''
 
 # The coremods config file path is not configurable and is always loaded from META-INF/coremods.json
 
+# Here's another dependency
+[[dependencies.${mod_id}]]
+    modId="ae2"
+    type="REQUIRED"
+    versionRange="[19.0.20-beta,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="mekanism"
+    type="OPTIONAL"
+    versionRange="[10.6.6,)"
+    ordering="AFTER"
+    side="BOTH"
+
+
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.${mod_id}]] #optional
     # the modid of the dependency
