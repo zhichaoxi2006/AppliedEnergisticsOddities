@@ -45,7 +45,7 @@ public class MEChemicalHandler implements IChemicalHandler {
 
     @Override
     public long getChemicalTankCapacity(int i) {
-        return Integer.MAX_VALUE;
+        return getChemicalInTank(i).getAmount();
     }
 
     @Override

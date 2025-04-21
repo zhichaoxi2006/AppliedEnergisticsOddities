@@ -37,7 +37,7 @@ public class MEFluidHandler implements IFluidHandler {
 
     @Override
     public int getTankCapacity(int tank) {
-        return Integer.MAX_VALUE;
+        return getFluidInTank(tank).getAmount();
     }
 
     @Override
