@@ -117,8 +117,8 @@ dependencies {
     implementation "curse.maven:guideme-1173950:6223759"
     implementation "curse.maven:applied-energistics-2-223794:6225422"
 
-    implementation "curse.maven:mekanism-268560:6018306"
-    implementation "curse.maven:applied-mekanistics-574300:5978711"
+    compileOnly "curse.maven:mekanism-268560:6018306"
+    compileOnly "curse.maven:applied-mekanistics-574300:5978711"
 
     compileOnly "dev.emi:emi-neoforge:1.1.10+1.21"
     compileOnly "curse.maven:jade-324717:5427817"

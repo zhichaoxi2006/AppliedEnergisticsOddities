@@ -2,36 +2,33 @@ package com.zhichaoxi.ae_oddities;
 
 import appeng.api.AECapabilities;
 import appeng.api.networking.IInWorldGridNodeHost;
-import appeng.core.localization.GuiText;
+import com.mojang.logging.LogUtils;
 import com.zhichaoxi.ae_oddities.blocks.entity.MEStorageExposerBlockEntity;
+import com.zhichaoxi.ae_oddities.compat.MekCompat;
 import com.zhichaoxi.ae_oddities.init.AEOBlockEntities;
 import com.zhichaoxi.ae_oddities.init.AEOBlocks;
 import com.zhichaoxi.ae_oddities.init.AEOItems;
-import me.ramidzkh.mekae2.MekCapabilities;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.fml.ModList;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.slf4j.Logger;
 
 import java.util.function.Supplier;
 
@@ -42,6 +39,7 @@ public class AE_Oddities
     public static final String MODID = "ae_oddities";
 
     private static final Logger LOGGER = LogUtils.getLogger();
+    public static boolean MekLoaded = false;
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
@@ -77,14 +75,13 @@ public class AE_Oddities
     }
 
     private static void initUpgrades(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            var wirelessTerminalGroup = GuiText.WirelessTerminals.getTranslationKey();
-
-        });
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        if (ModList.get().isLoaded("mekanism")) {
+            MekLoaded = true;
+        }
     }
 
     // Add the example block item to the building blocks tab
@@ -106,16 +103,15 @@ public class AE_Oddities
             for (var type : AEOBlockEntities.DR.getEntries()) {
                 event.registerBlockEntity(
                         AECapabilities.IN_WORLD_GRID_NODE_HOST, type.get(), (be, context) -> (IInWorldGridNodeHost) be);
+            }
 
-                event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
-                        AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getItemHandler);
-                event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
-                        AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getFluidHandler);
+            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK,
+                    AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getItemHandler);
+            event.registerBlockEntity(Capabilities.FluidHandler.BLOCK,
+                    AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getFluidHandler);
 
-                if (ModList.get().isLoaded("appmek")) {
-                    event.registerBlockEntity(MekCapabilities.CHEMICAL.block(),
-                            AEOBlockEntities.ME_STORAGE_EXPOSER.get(), MEStorageExposerBlockEntity::getChemicalHandler);
-                }
+            if (MekLoaded) {
+                MekCompat.registerCapabilities(event);
             }
         }
     }
